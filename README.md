@@ -5,8 +5,8 @@ An opinionated, minimal and modern [cookiecutter](https://github.com/audreyr/coo
 for Python packages, and some guidelines for Python packaging.
 
 This is a fork of [pyproject-minimal](https://github.com/kragniz/cookiecutter-pypackage-minimal)
-aiming at support of the latest developments in Python dev tools, python packaging and Github
-functionalities.
+aiming at support of the latest developments in Python dev tools, python packaging, Github
+functionalities and *de facto* standards.
 
 This is meant to be as simple as possible but as powerful as necessary, however it won't help you
 beyond the initial configuration.
@@ -41,9 +41,15 @@ Fill out [`README.md`]({{cookiecutter.package_name}}/README.md), and — if nece
 license](https://choosealicense.com/) for the project.
 
 The version is single-sourced in
-[{{cookiecutter.package_name}}/__init__.py]({{cookiecutter.package_name}}/__init__.py) to avoid
+[`{{cookiecutter.package_name}}/__init__.py`]({{cookiecutter.package_name}}/__init__.py) to avoid
 having your project depend on setuptools, this is the place where you should change it when you push
 a new version.
+
+**Prefer [Semantic Versioning](https://semver.org)** if you don't have very specific needs.
+It is not necessarily perfect, but it is sensible and is widely known.
+Have a look at [PEP 440](https://www.python.org/dev/peps/pep-0440) for more on Python packages
+version names standards, in particular, the pre- and post-release identifiers as pip can take
+advantage of them.
 
 ## Explanations
 
