@@ -1,59 +1,141 @@
-cookiecutter-pypackage-minimal
+cookiecutter-pypackage-minimodern
 ==============================
 
-An opinionated, minimal [cookiecutter](https://github.com/audreyr/cookiecutter) template for Python packages, and some guidelines for Python packaging.
+An opinionated, minimal and modern [cookiecutter](https://github.com/audreyr/cookiecutter) template
+for Python packages, and some guidelines for Python packaging.
 
-Usage
------
+This is a fork of [pyproject-minimal](https://github.com/kragniz/cookiecutter-pypackage-minimal)
+aiming at support of the latest developments in Python dev tools, python packaging and Github
+functionalities.
 
-    pip install cookiecutter
-    git clone https://github.com/kragniz/cookiecutter-pypackage-minimal.git
-    cookiecutter cookiecutter-pypackage-minimal/
+This is meant to be as simple as possible but as powerful as necessary, however it won't help you
+beyond the initial configuration.
+If you would like more project management automation, consider [dephell](https://dephell.org).
 
-You should then change the classifiers in `{{ package_name }}/setup.py` - it is assumed that the project will run on the latest versions of Python 2 and 3, so you should remove any classifiers that do not apply. The full list of PyPI classifiers can be found [here](https://pypi.org/classifiers/).
+## Usage
 
-Fill out the README, and - if necessary - [choose a license](https://choosealicense.com/) for the project.
+If you are not yet using cookiecutter, I recommend installing it via with
+[pipx](https://pipxproject.github.io/pipx/).
 
-Explanation
------------
+```console
+pipx install cookiecutter
+cookiecutter https://github.com/Evpok/cookiecutter-pypackage-minimodern
+```
 
-The decisions `cookiecutter-pypackage-minimal` makes should all be explained here.
+**Use [virtualenv](https://virtualenv.pypa.io)** to develop your package
+
+```console
+python3 -m virtualenv .virtenv
+source .virtenv/bin/activate
+pip install -e .
+```
+
+Keep it updated with `pip install -U -e .` when its internal structure change.
+
+You should then change the classifiers in [`{{ package_name
+}}/setup.cfg`]({{cookiecutter.package_name}}/setup.cfg) - it is assumed that the project will run on
+the latest versions of Python , so you should remove any classifiers that do not apply.
+The full list of PyPI classifiers can be found [here](https://pypi.org/classifiers/).
+
+Fill out [`README.md`]({{cookiecutter.package_name}}/README.md), and — if necessary — [choose a
+license](https://choosealicense.com/) for the project.
+
+The version is single-sourced in
+[{{cookiecutter.package_name}}/__init__.py]({{cookiecutter.package_name}}/__init__.py) to avoid
+having your project depend on setuptools, this is the place where you should change it when you push
+a new version.
+
+## Explanations
+
+The decisions we made are detailed here, feel free to file an issue with us if you have ideas or
+opinions on how to improve them.
 
 ### README
 
-* **README should use reStructuredText format**
-  This is the format used by most Python tools, is expected by [setuptools](https://setuptools.readthedocs.io), and can be used by [Sphinx](http://sphinx-doc.org/).
-* **As few README files as possible**
-  Additional README files (AUTHORS, CHANGELOG, etc) should be left to the user to create when necessary.
+- **[`README`]({{cookiecutter.package_name}}/README.md) should use Markdown**
+  This is the format used and known by most people outside of the Python ecosystem.
+  In most flavours it is a subset of the ReStructured Text format used for Python so it functions as
+  a least common denominator.
+  Since README as displayed on the Github repo page is *de facto* a common entry point to a
+  project, it is important that it is displayed correctly there.
+- **As few README files as possible but as many as necssary**
+  In addition to README, [`CHANGELOG.md`]({{cookiecutter.package_name}}/CHANGELOG.md) is provided
+  with the convention from [keep a changelog](https://keepachangelog.com). Please use it. Please.
 
 ### LICENSE
 
-* **MIT license by default**
-  This template provides you the classic [MIT](https://choosealicense.com/licenses/mit/) licence: it lets people do almost anything they want with your project, including to make and distribute closed source versions.
-  If you [choose another license](https://choosealicense.com/), you also need to update the `{{ package_name }}/setup.py` file:
-  adjust the `classifiers` and `license` fields accordingly.
-* **A license is a requirement**
+- **MIT license by default**
+  
+  - This template provides you the omnipresent [MIT](https://choosealicense.com/licenses/mit/)
+  licence: it lets people do almost anything they want with your project, including to make and
+  distribute closed source versions.
+    This is not necessarily ideal, but it is known well enough to make people feel safe and reduce
+    friction.
+
+    If and when your project gains more traction, you might want to consider other options to e.g.
+    ensure that major companies that benefit from you and your communities hard work are giving back
+    accordingly to their capacities.
+  - If you [choose another license](https://choosealicense.com/), you also need to update [`{{
+  package_name}}/setup.cfg`]({{cookiecutter.package_name}}/setup.cfg): adjust the `classifiers` and
+  `license` fields accordingly.
+- **A license is a requirement**
   Nowadays, people who want to use your library/application want to make sure they can do it legally.
-  If your library is a private library, you can use a private license. In the `{{ package_name }}/setup.py` file, set `license="Proprietary"`, and choose `'License :: Other/Proprietary License'` in the trove classifiers.
+  If your library is proprietary, please reconsider.
 
-### `setup.py`
+### [`setup.cfg`]({{cookiecutter.package_name}}/setup.cfg)
 
-* **Use setuptools**
-  It's the standard packaging library for Python. `distribute` has merged back into `setuptools`, and `distutils` is less capable.
-* **setup.py should not import anything from the package**
-  When installing from source, the user may not have the packages dependencies installed, and importing the package is likely to raise an `ImportError`.
-* **setup.py should be the canonical source of package dependencies**
-  There is no reason to duplicate dependency specifiers (i.e. also using a `requirements.txt` file). See the testing section below for testing dependencies.
+- **Use setuptools**
+  It's the standard packaging library for Python. That's it, that's the tweet.
+- **`setup.py` should not exist**
+  Metadata should not be Turing-complete.
+  Sadly, for the time being, it seems that a [`setup.py`]({{cookiecutter.package_name}}/setup.py) is
+  still mandatory, but we can keep it pure boilerplate and put all the actual data in
+  [`setup.cfg`]({{cookiecutter.package_name}}/setup.cfg) and hopefully in `pyproject.toml` at [some point](https://github.com/pypa/setuptools/issues/1688).
+  Have a look at [setuptools'
+  doc](https://setuptools.readthedocs.io/en/latest/setuptools.html#configuring-setup-using-setup-cfg-files)
+  to learn more about this.
+
+  More complex installation stories (C extensions and so on) are out of scope for this template.
+- **setup.cfg should be the canonical source of package dependencies**
+  Requirements files and pinned dependencies have their uses, but not for installable packages in my
+  opinion.
+  If you don't agree, at least have a look at [Pipenv](https://pipenv.kennethreitz.org) to use an
+  appropriate toolset.
+
+  See also [Testing](#Testing) below for testing dependencies.
+
+### Linting and formatting
+
+- **Use a linter**
+  The default here is [flake8](http://flake8.pycqa.org), chosen for its versatility and relatively
+  low false-positive rate.
+- **Use [black](https://pypi.org/project/black)**
+  Not just any formatter, **black**.
+  This project is the best thing that has happened to Python in a long time.
+  It provides a sane, sensible, readable, deterministic and previsible format without any effort of
+  configuration.
+  If you don't like it, well, you will get used to it.
+- **Use [mypy](http://www.mypy-lang.org)**
+  And type your code as much as sensible, not only it will provide you with very powerful linting,
+  but it will also make your documentation much clearer.
+- **Lint EVERYTHING**
+  We also add [a sane-ish config]({{cookiecutter.package_name}}/.markdownlint.json) for [markdownlint](https://github.com/DavidAnson/markdownlint).
+  I am not a huge fan of it, but I don't know of a better alternative to lint Markdown files.
 
 ### Testing
 
-* **Use [Tox](https://tox.readthedocs.io) to manage test environments**
-  Tox provides isolation, runs tests across multiple Python versions, and ensures the package can be installed.
-* **Uses [pytest](https://docs.pytest.org) as the default test runner**
-  This can be changed easily, though pytest is a easier, more powerful test library and runner than the standard library's unittest.
-* **Define testing dependencies in `tox.ini`**
-  Avoid duplicating dependency definitions, and use `tox.ini` as the canonical description of how the unittests should be run.
-* **`tests` directory should not be a package**
-  The `tests` directory should not be a Python package unless you want to define some fixtures.
-  But the best practices are to use [PyTest fixtures](https://docs.pytest.org/en/latest/fixture.html) which provides a better solution.
-  Therefore, the `tests` directory has no `__init__.py` file.
+- **Use [Tox](https://tox.readthedocs.io) to manage test environments**
+  Tox provides isolation, runs tests across multiple Python versions, and ensures the package can be
+  installed.
+- **Uses [pytest](https://docs.pytest.org) as the default test runner**
+  This can be changed easily, though pytest is a easier, more powerful test library and runner than
+  the standard library's unittest.
+
+  Consider using it in combination with [hypothesis](https://hypothesis.works/).
+- **Define testing dependencies in [`tox.ini`]({{cookiecutter.package_name}}/tox.ini)**
+  Avoid duplicating dependency definitions, and use `tox.ini` as the canonical description of how
+  the unittests should be run.
+- **[`tests/`]({{cookiecutter.package_name}}/tests) is not a package by default**
+  Therefore, it has no `__init__.py` file, but have a look at [pytest's
+  doc](https://docs.pytest.org/en/latest/goodpractices.html#choosing-a-test-layout-import-rules) on
+  chosing a test layout.
