@@ -19,7 +19,7 @@ Install with pip
 python3 -m pip install --user {{ cookiecutter.package_name }}
 ```
 
-## Licence
+## License
 
 Unless otherwise specified, the following licence (the so-called “MIT License”) applies to all the
 files in this repository.
