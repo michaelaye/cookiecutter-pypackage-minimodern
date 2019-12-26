@@ -59,6 +59,16 @@ Have a look at [PEP 440](https://www.python.org/dev/peps/pep-0440) for more on P
 version names standards, in particular, the pre- and post-release identifiers as pip can take
 advantage of them.
 
+### Publish
+
+[The publish workflow]({{cookiecutter.package_name}}/.github/workflows/publish.yml) takes care of
+publishing your Github releases on Pypi provided that you set the `secrets.PYPI_USERNAME` and
+`secrets.PYPI_PASSWORD` in <https://github.com/gh-username/project-name/settings/secrets>.
+
+Since Pypi is very reluctant to let you remove or overwrite existant releases, it will only run when
+a release is firts added, so if you mess up a release, you will have to fix manually on Pypi or
+(better) make a new postrelease.
+
 ## Explanations
 
 The decisions we made are detailed here, feel free to file an issue with us if you have ideas or
@@ -156,5 +166,5 @@ opinions on how to improve them.
 
 ### Continuous integration
 
-- [A github workflow]({{cookiecutter.package_name}}/.github/ci.yml) is configured to run linting and
-  tests.
+- [A github workflow]({{cookiecutter.package_name}}/.github//workflows/ci.yml) is configured to run
+  linting and tests.
