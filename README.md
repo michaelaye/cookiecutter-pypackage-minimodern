@@ -1,16 +1,18 @@
-cookiecutter-pypackage-minimodern
-=================================
+pypackage-minimodern
+====================
 
 An opinionated, minimal and modern [cookiecutter](https://github.com/audreyr/cookiecutter) template
 for Python packages, and some guidelines for Python packaging.
 
-This is a fork of [pyproject-minimal](https://github.com/kragniz/cookiecutter-pypackage-minimal)
+This is a fork of [pypackage-minimal](https://github.com/kragniz/cookiecutter-pypackage-minimal)
 aiming at support of the latest developments in Python dev tools, python packaging, Github
 functionalities and *de facto* standards.
 
 This is meant to be as simple as possible but as powerful as necessary, however it won't help you
 beyond the initial configuration.
 If you would like more project management automation, consider [dephell](https://dephell.org).
+
+**Bug reports, feature requests and PRs are welcome.**
 
 ## Usage
 
