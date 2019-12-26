@@ -48,10 +48,11 @@ license](https://choosealicense.com/) for the project.
 
 ### Versioning
 
-The version is single-sourced in
-[`{{cookiecutter.package_name}}/__init__.py`]({{cookiecutter.package_name}}/__init__.py) to avoid
-having your project depend on setuptools, this is the place where you should change it when you push
-a new version.
+The version string is present in both [`__init__.py`]({{cookiecutter.package_name}}/__init__.py) and
+[`setup.cfg`]({{cookiecutter.package_name}}/setup.cfg) for complete independence between setup and
+usage of your package.
+When you push a new version, remember to change it in both place, you might also want to explore
+[single-sourcing options](https://packaging.python.org/guides/single-sourcing-package-version).
 
 **Prefer [Semantic Versioning](https://semver.org)** if you don't have very specific needs.
 It is not necessarily perfect, but it is sensible and is widely known.

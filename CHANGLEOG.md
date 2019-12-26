@@ -15,9 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Continuous integration lint and test Github workflow.
 - Pypi publication Github workflow
 
-### Changes
+### Changed
 
 - Improved README autofilling
+
+### Fixed
+
+- The version string is not single-sourced anymore to avoid having either the package depend on
+  setuptools or setuptools importing the package at installation time.
 
 ## [0.0.1] — 2019-12-26
 
