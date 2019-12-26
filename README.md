@@ -63,8 +63,8 @@ advantage of them.
 ### Publish
 
 [The publish workflow]({{cookiecutter.package_name}}/.github/workflows/publish.yml) takes care of
-publishing your Github releases on Pypi provided that you set the `secrets.PYPI_USERNAME` and
-`secrets.PYPI_PASSWORD` in <https://github.com/gh-username/project-name/settings/secrets>.
+publishing your Github releases on Pypi provided that you set the `PYPI_USERNAME` and
+`PYPI_PASSWORD` secrets in <https://github.com/gh-username/project-name/settings/secrets>.
 
 Since Pypi is very reluctant to let you remove or overwrite existant releases, it will only run when
 a release is firts added, so if you mess up a release, you will have to fix manually on Pypi or
