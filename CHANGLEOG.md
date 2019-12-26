@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Evpok/cookiecutter-pypackage-minimodern/compare/v0.0.1...HEAD
 
+### Added
+
+- Continuous integration lint and test Github workflow.
+
 ### Changes
 
 - Improved README autofilling

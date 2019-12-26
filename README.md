@@ -153,3 +153,8 @@ opinions on how to improve them.
   Therefore, it has no `__init__.py` file, but have a look at [pytest's
   doc](https://docs.pytest.org/en/latest/goodpractices.html#choosing-a-test-layout-import-rules) on
   chosing a test layout.
+
+### Continuous integration
+
+- [A github workflow]({{cookiecutter.package_name}}/.github/ci.yml) is configured to run linting and
+  tests.

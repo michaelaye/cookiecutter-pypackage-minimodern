@@ -4,6 +4,9 @@
 {% if cookiecutter.readme_pypi_badge -%}
 [[!Latest PyPI version](https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg)](https://pypi.org/project/{{ cookiecutter.package_name }})
 {%- endif %}
+{% if cookiecutter.github_project_url -%}
+![Build Status]({{ cookiecutter.github_project_url }}/workflows/ci/badge.svg)
+{%- endif %}
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
