@@ -7,5 +7,5 @@
     "package_description": "An opinionated, minimal and modern cookiecutter template for Python packages",
     "package_url": "https://github.com/borntyping/cookiecutter-pypackage-minimal",
     
-    "readme_pypi_badge": true,
+    "readme_pypi_badge": true
 }
