@@ -2,12 +2,11 @@
 {{ cookiecutter.package_name|count * "=" }}
 
 {% if cookiecutter.readme_pypi_badge -%}
-[[!Latest PyPI version](https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg)](https://pypi.org/project/{{ cookiecutter.package_name }})
+[![Latest PyPI version](https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg)](https://pypi.org/project/{{ cookiecutter.package_name }})
 {%- endif %}
 {% if cookiecutter.github_project_url -%}
-[[!Build Status]({{ cookiecutter.github_project_url }}/workflows/ci/badge.svg)]({{ cookiecutter.github_project_url }}/actions?query=workflow%3)
+[![Build Status]({{ cookiecutter.github_project_url }}/workflows/CI/badge.svg)]({{ cookiecutter.github_project_url }}/actions?query=workflow%3ACI)
 {%- endif %}
-
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 {{ cookiecutter.package_description }}
