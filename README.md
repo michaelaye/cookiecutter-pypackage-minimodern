@@ -16,7 +16,8 @@ If you would like more project management automation, consider [dephell](https:/
 
 ## Usage
 
-### Installation
+### Installation
+
 If you are not yet using cookiecutter, I recommend installing it via with
 [pipx](https://pipxproject.github.io/pipx/).
 
