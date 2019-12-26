@@ -1,5 +1,5 @@
 cookiecutter-pypackage-minimodern
-==============================
+=================================
 
 An opinionated, minimal and modern [cookiecutter](https://github.com/audreyr/cookiecutter) template
 for Python packages, and some guidelines for Python packaging.
@@ -14,6 +14,7 @@ If you would like more project management automation, consider [dephell](https:/
 
 ## Usage
 
+### Installation
 If you are not yet using cookiecutter, I recommend installing it via with
 [pipx](https://pipxproject.github.io/pipx/).
 
@@ -22,11 +23,14 @@ pipx install cookiecutter
 cookiecutter https://github.com/Evpok/cookiecutter-pypackage-minimodern
 ```
 
+### Development
+
 **Use [virtualenv](https://virtualenv.pypa.io)** to develop your package
 
 ```console
 python3 -m virtualenv .virtenv
 source .virtenv/bin/activate
+pip install black flake8 mypy pytest
 pip install -e .
 ```
 
@@ -39,6 +43,8 @@ The full list of PyPI classifiers can be found [here](https://pypi.org/classifie
 
 Fill out [`README.md`]({{cookiecutter.package_name}}/README.md), and — if necessary — [choose a
 license](https://choosealicense.com/) for the project.
+
+### Versioning
 
 The version is single-sourced in
 [`{{cookiecutter.package_name}}/__init__.py`]({{cookiecutter.package_name}}/__init__.py) to avoid
