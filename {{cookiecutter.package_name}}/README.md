@@ -9,9 +9,9 @@
 
 {{ cookiecutter.package_description }}
 
-## Usage
+## Usage
 
-## Installation
+## Installation
 
 Install with pip
 
